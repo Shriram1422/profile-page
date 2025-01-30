@@ -9,27 +9,28 @@ const ProfilePage = () => {
         avatar: '/IMG_3436.jpg', // Assuming the avatar.png is in the public folder.
     });
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);  // Set loading to true initially.
 
     useEffect(() => {
         // Mock API Call to simulate fetching user data
         setTimeout(() => {
-            // Simulate an error (e.g., network failure)
             const hasError = false; // Change this for testing the error condition
     
             if (hasError) {
                 setError('Failed to load user data');
+                setLoading(false); // Set loading to false if there's an error
             } else {
                 setUser({
                     name: '',
                     email: '',
                     avatar: '/avatar.png', // Assuming the avatar.png is in the public folder
                 });
+                setLoading(false); // Set loading to false once data is fetched
             }
-        }, 1000);
+        }, 1000); // Mock delay for the API call
     }, []);
 
     const handleSubmit = (values, { setSubmitting }) => {
-        // Simulate API call to update user information.
         setTimeout(() => {
             setUser({
                 ...user,
@@ -40,8 +41,8 @@ const ProfilePage = () => {
         }, 500);
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div className="error">{error}</div>;
+    if (loading) return <div>Loading...</div>; // Display loading indicator
+    if (error) return <div className="error">{error}</div>; // Display error message if any
 
     return (
         <div className="profile-page">
