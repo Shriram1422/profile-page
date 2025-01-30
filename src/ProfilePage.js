@@ -9,7 +9,6 @@ const ProfilePage = () => {
         avatar: '/IMG_3436.jpg', // Assuming the avatar.png is in the public folder.
     });
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // Mock API Call to simulate fetching user data
